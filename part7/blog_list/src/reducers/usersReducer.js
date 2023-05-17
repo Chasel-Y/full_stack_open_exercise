@@ -1,6 +1,6 @@
 const usersReducer = (state = { allusers: null, user: null }, action) => {
   switch (action.type) {
-  case "getAllUsers":
+  case "setAllUsers":
     return { ...state, allusers: action.payload.users };
   case "setUser":
     return { ...state, user: action.payload.user };

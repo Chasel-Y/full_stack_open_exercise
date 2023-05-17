@@ -8,7 +8,7 @@ import "./index.css";
 import notificationReducer from "./reducers/notificationReducer";
 import blogReducer from "./reducers/blogReducer";
 import usersReducer from "./reducers/usersReducer";
-import { Router } from "react-router-dom";
+import { BrowserRouter as Router, } from "react-router-dom";
 
 const rootReducer = combineReducers({
   blogs: blogReducer,

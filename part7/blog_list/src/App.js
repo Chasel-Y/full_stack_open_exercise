@@ -6,17 +6,19 @@ import Blogs from "./components/Blogs";
 import LoginArea from "./components/LoginArea";
 import Users from "./components/Users";
 import User from "./components/User";
+import Blog from "./components/Blog";
 import {
-  BrowserRouter as Router,
   Routes, Route, Link, useMatch
 } from 'react-router-dom'
 import axios from "axios";
+import { CreateBlogForm } from "./components/CreateBlogForm";
 
 const Home = () => (
   <div>
     <h2>blogs</h2>
     <NotificationMessage />
     <LoginArea />
+    <CreateBlogForm />
     <Blogs />
   </div>
 )
@@ -41,6 +43,17 @@ const UserPage = ({ choosedUser }) => {
   )
 }
 
+const BlogPage = ({ choosedBlog }) => {
+  return(
+    <div>
+      <h2>blogs</h2>
+      <NotificationMessage />
+      <LoginArea />
+      <Blog choosedBlog={choosedBlog}/>
+    </div>
+  )
+}
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -53,7 +66,7 @@ const App = () => {
 
   useEffect(() => {
     axios.get("/api/users").then((response) => {
-      dispatch({ type: "setUsers", payload: { users: response.data } });
+      dispatch({ type: "setAllUsers", payload: { users: response.data } });
     });
   }, []);
 
@@ -65,25 +78,35 @@ const App = () => {
       blogService.setToken(user.token);
     }
   }, []);
+
   const users = useSelector((state) => state.users.allusers);
-  const match = useMatch('/users/:id')
-  const choosedUser = match
-    ? users.find(user => user.id === match.params.id)
+  const matchUser = useMatch('/users/:id')
+  const choosedUser = matchUser
+    ? users.find(user => user.id === matchUser.params.id)
     : null
+
+  const blogs = useSelector((state) => state.blogs);
+  const matchBlog = useMatch('/blogs/:id')
+  const choosedBlog = matchBlog
+    ? blogs.find(blog => blog.id === matchBlog.params.id)
+    : null
+
+  const padding = {
+    padding: 5
+  }
 
   return (
     <div>
-      <Router>
-        <div>
-          <Link to="/">home</Link>
-          <Link to="/users">users</Link>
-        </div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<UsersPage />} />
-          <Route path="/users/:id" element={<UserPage choosedUser={choosedUser} />} />
-        </Routes>
-      </Router>
+      <div>
+        <Link style={padding} to="/">home</Link>
+        <Link style={padding} to="/users">users</Link>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/users/:id" element={<UserPage choosedUser={choosedUser} />} />
+        <Route path="/blogs/:id" element={<BlogPage choosedBlog={choosedBlog} />} />
+      </Routes>
     </div>
   );
 };
