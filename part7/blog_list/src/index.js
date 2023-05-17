@@ -7,18 +7,21 @@ import App from "./App";
 import "./index.css";
 import notificationReducer from "./reducers/notificationReducer";
 import blogReducer from "./reducers/blogReducer";
-import userReducer from "./reducers/userReducer";
+import usersReducer from "./reducers/usersReducer";
+import { Router } from "react-router-dom";
 
 const rootReducer = combineReducers({
   blogs: blogReducer,
   notifications: notificationReducer,
-  user: userReducer,
+  users: usersReducer,
 });
 
 const store = createStore(rootReducer);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>
 );

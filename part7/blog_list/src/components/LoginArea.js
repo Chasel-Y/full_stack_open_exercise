@@ -11,7 +11,7 @@ const LoginArea = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.users.user);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -97,7 +97,7 @@ const LoginArea = () => {
     return(
       <div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <p>{user.name} logged in</p>
+          <p>{user.username} logged in</p>
           <button style={{ margin: "0 0 0 10px" }} onClick={handleLogout}>
             logout
           </button>
