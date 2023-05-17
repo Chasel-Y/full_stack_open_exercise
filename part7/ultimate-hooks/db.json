@@ -1,0 +1,43 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "custom hooks are awesome"
+    },
+    {
+      "id": 2,
+      "content": "best feature ever <3"
+    },
+    {
+      "content": "good",
+      "id": 3
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "name": "Matti Luukkainen",
+      "number": "040-12344565"
+    },
+    {
+      "id": 2,
+      "name": "Tarja Halonen",
+      "number": "040-2223334"
+    },
+    {
+      "name": "chasel",
+      "number": "11111111",
+      "id": 3
+    },
+    {
+      "name": "chasel2",
+      "number": "222222222",
+      "id": 4
+    },
+    {
+      "name": "chasel3",
+      "number": "3333333",
+      "id": 5
+    }
+  ]
+}
