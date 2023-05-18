@@ -7,8 +7,9 @@ import LoginArea from "./components/LoginArea";
 import Users from "./components/Users";
 import User from "./components/User";
 import Blog from "./components/Blog";
+import NavigationMenu from "./components/NavigationMenu";
 import {
-  Routes, Route, Link, useMatch
+  Routes, Route, useMatch
 } from 'react-router-dom'
 import axios from "axios";
 import { CreateBlogForm } from "./components/CreateBlogForm";
@@ -17,7 +18,6 @@ const Home = () => (
   <div>
     <h2>blogs</h2>
     <NotificationMessage />
-    <LoginArea />
     <CreateBlogForm />
     <Blogs />
   </div>
@@ -27,7 +27,6 @@ const UsersPage = () => (
   <div>
     <h2>blogs</h2>
     <NotificationMessage />
-    <LoginArea />
     <Users />
   </div>
 )
@@ -37,7 +36,6 @@ const UserPage = ({ choosedUser }) => {
     <div>
       <h2>blogs</h2>
       <NotificationMessage />
-      <LoginArea />
       <User choosedUser={choosedUser}/>
     </div>
   )
@@ -48,11 +46,18 @@ const BlogPage = ({ choosedBlog }) => {
     <div>
       <h2>blogs</h2>
       <NotificationMessage />
-      <LoginArea />
       <Blog choosedBlog={choosedBlog}/>
     </div>
   )
 }
+
+const LoginPage = () => (
+  <div>
+    <h2>blogs</h2>
+    <NotificationMessage />
+    <LoginArea />
+  </div>
+)
 
 
 const App = () => {
@@ -91,21 +96,15 @@ const App = () => {
     ? blogs.find(blog => blog.id === matchBlog.params.id)
     : null
 
-  const padding = {
-    padding: 5
-  }
-
   return (
     <div>
-      <div>
-        <Link style={padding} to="/">home</Link>
-        <Link style={padding} to="/users">users</Link>
-      </div>
+      <NavigationMenu />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/users/:id" element={<UserPage choosedUser={choosedUser} />} />
         <Route path="/blogs/:id" element={<BlogPage choosedBlog={choosedBlog} />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );

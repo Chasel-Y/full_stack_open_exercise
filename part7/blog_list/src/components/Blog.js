@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import blogService from "../services/blogs";
+import Comments from "./Comments";
 
 const Blog = ({ choosedBlog }) => {
   const dispatch = useDispatch();
@@ -38,26 +39,39 @@ const Blog = ({ choosedBlog }) => {
       author: blog.author,
       title: blog.title,
       url: blog.url,
+      comments: blog.comments,
     };
-    try {
-      const returnedBlog = await blogService.update(blog.id, updateBlog);
-      returnedBlog.user = blog.user;
-      returnedBlog.id = blog.id;
-      dispatch({ type: "updateBlog", payload: { blog: returnedBlog } });
-      dispatch({
-        type: "setNotification",
-        payload: {
-          content: `${returnedBlog.title} get a like from ${user.name}`,
-        },
-      });
-      setTimeout(() => {
-        dispatch({ type: "notificationClear" });
-      }, 5000);
-    } catch (exception) {
+    if(user){
+      try {
+        const returnedBlog = await blogService.update(blog.id, updateBlog);
+        returnedBlog.user = blog.user;
+        returnedBlog.id = blog.id;
+        dispatch({ type: "updateBlog", payload: { blog: returnedBlog } });
+        dispatch({
+          type: "setNotification",
+          payload: {
+            content: `${returnedBlog.title} get a like from ${user.name}`,
+          },
+        });
+        setTimeout(() => {
+          dispatch({ type: "notificationClear" });
+        }, 5000);
+      } catch (exception) {
+        dispatch({
+          type: "setError",
+          payload: {
+            content: "Error: cannot like blog, please relogin and try again.",
+          },
+        });
+        setTimeout(() => {
+          dispatch({ type: "notificationClear" });
+        }, 5000);
+      }
+    } else {
       dispatch({
         type: "setError",
         payload: {
-          content: "Error: cannot like blog, please relogin and try again.",
+          content: "Error: cannot like blog, please login and try again.",
         },
       });
       setTimeout(() => {
@@ -71,21 +85,25 @@ const Blog = ({ choosedBlog }) => {
   }
   return (
     <div>
-      <h2>{choosedBlog.title} - {choosedBlog.author}</h2>
-      <br></br>
-      <a href={choosedBlog.url}>{choosedBlog.url}</a>
-      <br></br>
-      {choosedBlog.likes}{" "}likes
-      <button onClick={() => handleBlogLike(choosedBlog, user)} id="likeButton">
-        like
-      </button>
-      <br></br>
-      added by {choosedBlog.user.name}
-      <br></br>
-      {user && choosedBlog.user.id === user.id && (
-        <button onClick={() => handleDeleteBlog(choosedBlog, user)}>remove</button>
-      )}
+      <div>
+        <h2>{choosedBlog.title} - {choosedBlog.author}</h2>
+        <br></br>
+        <a href={choosedBlog.url} >{choosedBlog.url}</a>
+        <br></br>
+        {choosedBlog.likes}{" "}likes
+        <button onClick={() => handleBlogLike(choosedBlog, user)} id="likeButton">
+          like
+        </button>
+        <br></br>
+        added by {choosedBlog.user.username}
+        <br></br>
+        {user && choosedBlog.user.id === user.id && (
+          <button onClick={() => handleDeleteBlog(choosedBlog, user)}>remove</button>
+        )}
+      </div>
+      <Comments choosedBlog={choosedBlog} />
     </div>
+
   );
 }
 
