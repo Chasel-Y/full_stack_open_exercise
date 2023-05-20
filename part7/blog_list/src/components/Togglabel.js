@@ -25,8 +25,8 @@ const Togglabel = forwardRef((props, ref) => {
         </button>
       </div>
       <div style={showWhenVisible}>
-        <button className="button is-warning is-light" onClick={toggleVisibility}>
-          {props.closeLabel}
+        <button className="button is-warning" onClick={toggleVisibility}>
+          <strong>{props.closeLabel}</strong>
         </button>
         {props.children}
       </div>

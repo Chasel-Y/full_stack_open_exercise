@@ -9,30 +9,41 @@ const LoginForm = ({
 }) => {
   return (
     <div>
-      <h2>log in to application</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          username
-          <input
-            type="text"
-            value={username}
-            id="username"
-            onChange={handleUsernameChange}
-          />
+      <div className="container">
+        <div className="columns">
+          <div className="column has-background-info-light custom-column">
+            <h3 className="subtitle is-3">Log in to application</h3>
+            <form onSubmit={handleLogin}>
+              <div className="field">
+                <label className="label">Username</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    value={username}
+                    id="username"
+                    onChange={handleUsernameChange}
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input
+                    type="password"
+                    value={password}
+                    id="password"
+                    onChange={handlePasswordChange}
+                  />
+                </div>
+              </div>
+
+              <button type="submit" id="login-button" className="button is-info">
+                login
+              </button>
+            </form>
+          </div>
         </div>
-        <div>
-          password
-          <input
-            type="password"
-            value={password}
-            id="password"
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <button type="submit" id="login-button">
-          login
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -98,14 +98,14 @@ const Blog = ({ choosedBlog }) => {
           <div className="flex-container">
             <p className="mr-2" >{choosedBlog.likes}{" "}likes</p>
             <button onClick={() => handleBlogLike(choosedBlog, user) } id="likeButton" className="button is-danger is-small is-rounded">
-              like
+              <strong>like</strong>
             </button>
           </div>
           <br></br>
           <div>
             {user && choosedBlog.user.id === user.id && (
-              <button onClick={() => handleDeleteBlog(choosedBlog, user)} className="button is-warning is-small">
-                Delete
+              <button onClick={() => handleDeleteBlog(choosedBlog, user)} className="button is-warning is-small is-rounded">
+                <strong>Delete</strong>
               </button>
             )}
             <p>added by {choosedBlog.user.username}</p>

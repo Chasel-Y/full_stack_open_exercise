@@ -54,7 +54,7 @@ const Comments = ({ choosedBlog }) => {
         </div>
         <ul className="bulma-list custom-list">
           {choosedBlog.comments!==[] && choosedBlog.comments.map((comment) => (
-            <li key={comment}>{comment}</li>
+            <li key={comment}><strong>{comment}</strong></li>
           ))}
         </ul>
       </div>

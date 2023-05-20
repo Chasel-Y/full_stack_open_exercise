@@ -16,7 +16,7 @@ import { CreateBlogForm } from "./components/CreateBlogForm";
 
 const Home = () => (
   <div className="container">
-    <h1 className="title is-1">blogs</h1>
+    <h1 className="title is-1" style={{ marginTop: '2.0rem', marginBottom: '3.0rem' }}>blogs</h1>
     <NotificationMessage />
     <CreateBlogForm />
     <Blogs />
@@ -25,7 +25,7 @@ const Home = () => (
 
 const UsersPage = () => (
   <div className="container">
-    <h1 className="title is-1">blogs</h1>
+    <h1 className="title is-1" style={{ marginTop: '2.0rem', marginBottom: '3.0rem' }}>blogs</h1>
     <NotificationMessage />
     <Users />
   </div>
@@ -34,7 +34,7 @@ const UsersPage = () => (
 const UserPage = ({ choosedUser }) => {
   return(
     <div className="container">
-      <h1 className="title is-1">blogs</h1>
+      <h1 className="title is-1" style={{ marginTop: '2.0rem', marginBottom: '3.0rem' }}>blogs</h1>
       <NotificationMessage />
       <User choosedUser={choosedUser}/>
     </div>
@@ -44,7 +44,7 @@ const UserPage = ({ choosedUser }) => {
 const BlogPage = ({ choosedBlog }) => {
   return(
     <div className="container">
-      <h1 className="title is-1">blogs</h1>
+      <h1 className="title is-1"style={{ marginTop: '2.0rem', marginBottom: '3.0rem' }}>blogs</h1>
       <NotificationMessage />
       <Blog choosedBlog={choosedBlog}/>
     </div>
@@ -53,7 +53,7 @@ const BlogPage = ({ choosedBlog }) => {
 
 const LoginPage = () => (
   <div className="container">
-    <h1 className="title is-1">blogs</h1>
+    <h1 className="title is-1" style={{ marginTop: '2.0rem', marginBottom: '3.0rem' }}>blogs</h1>
     <NotificationMessage />
     <LoginArea />
   </div>

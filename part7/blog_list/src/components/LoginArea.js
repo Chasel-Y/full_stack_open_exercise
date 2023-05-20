@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { Togglabel } from "./Togglabel";
+import { useNavigate } from 'react-router-dom'
 import { LoginForm } from "./LoginForm";
 import loginService from "../services/login"
 import blogService from "../services/blogs";
@@ -10,6 +10,7 @@ const LoginArea = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.user);
+  const navigate = useNavigate()
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -23,6 +24,7 @@ const LoginArea = () => {
       dispatch({ type: "setUser", payload: { user: user } });
       setUsername("");
       setPassword("");
+      navigate('/')
     } catch (exception) {
       dispatch({
         type: "setError",
@@ -48,21 +50,19 @@ const LoginArea = () => {
 
   if (user === null) {
     return(
-      <Togglabel buttonLabel="log in" closeLabel="cancel">
-        <LoginForm
-          handleLogin={handleLogin}
-          handleUsernameChange={({ target }) => setUsername(target.value)}
-          handlePasswordChange={({ target }) => setPassword(target.value)}
-          username={username}
-          password={password}
-        />
-      </Togglabel>
+      <LoginForm
+        handleLogin={handleLogin}
+        handleUsernameChange={({ target }) => setUsername(target.value)}
+        handlePasswordChange={({ target }) => setPassword(target.value)}
+        username={username}
+        password={password}
+      />
     )
   } else{
     return(
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <p>{user.username} logged in</p>
-        <button style={{ margin: "0 0 0 10px" }} onClick={handleLogout}>
+      <div className="flex-container">
+        <p className="mr-2">{user.username} logged in</p>
+        <button className="button is-warning" onClick={handleLogout}>
           logout
         </button>
       </div>
