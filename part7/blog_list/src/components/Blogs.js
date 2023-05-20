@@ -4,23 +4,21 @@ import { Link } from 'react-router-dom'
 const Blogs = () => {
   const blogs = useSelector((state) => state.blogs);
 
-  const blogStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: "solid",
-    borderWidth: 1,
-    marginBottom: 5,
-  };
-
   return(
-    <div>
-      {blogs.sort((a, b) => b.likes - a.likes)
-        .map((blog) => (
-          <div style={blogStyle} className="blog" key={blog.id}>
-            <Link to={`/blogs/${blog.id}`}>{blog.title} - {blog.author}</Link>
-          </div>
-        ))
-      }
+    <div className="container mt-4">
+      <div className="columns">
+        <div className="column has-background-info-light custom-column">
+          <ul className="bulma-list custom-list">
+            {blogs.sort((a, b) => b.likes - a.likes)
+              .map((blog) => (
+                <li key={blog.id}>
+                  <Link to={`/blogs/${blog.id}`}>{blog.title} - {blog.author}</Link>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }

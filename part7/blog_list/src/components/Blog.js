@@ -84,26 +84,36 @@ const Blog = ({ choosedBlog }) => {
     return null;
   }
   return (
-    <div>
-      <div>
-        <h2>{choosedBlog.title} - {choosedBlog.author}</h2>
-        <br></br>
-        <a href={choosedBlog.url} >{choosedBlog.url}</a>
-        <br></br>
-        {choosedBlog.likes}{" "}likes
-        <button onClick={() => handleBlogLike(choosedBlog, user)} id="likeButton">
-          like
-        </button>
-        <br></br>
-        added by {choosedBlog.user.username}
-        <br></br>
-        {user && choosedBlog.user.id === user.id && (
-          <button onClick={() => handleDeleteBlog(choosedBlog, user)}>remove</button>
-        )}
+    <div className="container">
+      <div className="columns">
+        <div className="column has-background-info-light custom-column">
+          <p><strong>{choosedBlog.title} - {choosedBlog.author}</strong></p>
+        </div>
+      </div>
+      <div className="columns mt-4">
+        <div className="column has-background-info-light custom-column">
+          <div>
+            <a href={choosedBlog.url} >{choosedBlog.url}</a>
+          </div>
+          <div className="flex-container">
+            <p className="mr-2" >{choosedBlog.likes}{" "}likes</p>
+            <button onClick={() => handleBlogLike(choosedBlog, user) } id="likeButton" className="button is-danger is-small is-rounded">
+              like
+            </button>
+          </div>
+          <br></br>
+          <div>
+            {user && choosedBlog.user.id === user.id && (
+              <button onClick={() => handleDeleteBlog(choosedBlog, user)} className="button is-warning is-small">
+                Delete
+              </button>
+            )}
+            <p>added by {choosedBlog.user.username}</p>
+          </div>
+        </div>
       </div>
       <Comments choosedBlog={choosedBlog} />
     </div>
-
   );
 }
 

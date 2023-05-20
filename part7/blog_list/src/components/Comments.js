@@ -40,22 +40,24 @@ const Comments = ({ choosedBlog }) => {
   };
 
   return(
-    <div>
-      <div>
-        <h3>comments</h3>
-        <input
-          type="text"
-          value={comment}
-          id="comment"
-          onChange={({ target }) => setComment(target.value)}
-        />
-        <button onClick={() => handleAddComment(choosedBlog, comment)}>add comment</button>
+    <div className="columns mt-4">
+      <div className="column has-background-info-light custom-column">
+        <div>
+          <h3 className="subtitle is-3">comments</h3>
+          <textarea
+            className="textarea is-primary"
+            value={comment}
+            id="comment"
+            onChange={({ target }) => setComment(target.value)}
+          />
+          <button onClick={() => handleAddComment(choosedBlog, comment)} className="button is-success is-small">add comment</button>
+        </div>
+        <ul className="bulma-list custom-list">
+          {choosedBlog.comments!==[] && choosedBlog.comments.map((comment) => (
+            <li key={comment}>{comment}</li>
+          ))}
+        </ul>
       </div>
-      <ul>
-        {choosedBlog.comments!==[] && choosedBlog.comments.map((comment) => (
-          <li key={comment}>{comment}</li>
-        ))}
-      </ul>
     </div>
   )
 }

@@ -15,8 +15,8 @@ import axios from "axios";
 import { CreateBlogForm } from "./components/CreateBlogForm";
 
 const Home = () => (
-  <div>
-    <h2>blogs</h2>
+  <div className="container">
+    <h1 className="title is-1">blogs</h1>
     <NotificationMessage />
     <CreateBlogForm />
     <Blogs />
@@ -24,8 +24,8 @@ const Home = () => (
 )
 
 const UsersPage = () => (
-  <div>
-    <h2>blogs</h2>
+  <div className="container">
+    <h1 className="title is-1">blogs</h1>
     <NotificationMessage />
     <Users />
   </div>
@@ -33,8 +33,8 @@ const UsersPage = () => (
 
 const UserPage = ({ choosedUser }) => {
   return(
-    <div>
-      <h2>blogs</h2>
+    <div className="container">
+      <h1 className="title is-1">blogs</h1>
       <NotificationMessage />
       <User choosedUser={choosedUser}/>
     </div>
@@ -43,8 +43,8 @@ const UserPage = ({ choosedUser }) => {
 
 const BlogPage = ({ choosedBlog }) => {
   return(
-    <div>
-      <h2>blogs</h2>
+    <div className="container">
+      <h1 className="title is-1">blogs</h1>
       <NotificationMessage />
       <Blog choosedBlog={choosedBlog}/>
     </div>
@@ -52,8 +52,8 @@ const BlogPage = ({ choosedBlog }) => {
 }
 
 const LoginPage = () => (
-  <div>
-    <h2>blogs</h2>
+  <div className="container">
+    <h1 className="title is-1">blogs</h1>
     <NotificationMessage />
     <LoginArea />
   </div>

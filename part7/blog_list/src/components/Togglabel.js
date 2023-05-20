@@ -20,12 +20,12 @@ const Togglabel = forwardRef((props, ref) => {
   return (
     <div>
       <div style={hideWhenVisible}>
-        <button style={{ margin: "0 0 0 10px" }} onClick={toggleVisibility}>
+        <button className="button is-info" onClick={toggleVisibility}>
           {props.buttonLabel}
         </button>
       </div>
       <div style={showWhenVisible}>
-        <button style={{ margin: "0 0 0 10px" }} onClick={toggleVisibility}>
+        <button className="button is-warning is-light" onClick={toggleVisibility}>
           {props.closeLabel}
         </button>
         {props.children}

@@ -2,12 +2,12 @@ const notificationReducer = (state = {}, action) => {
   switch (action.type) {
   case "setNotification":
     return {
-      informationType: "notification",
+      informationType: "notification is-success is-light",
       content: action.payload.content,
     };
   case "setError":
     return {
-      informationType: "error",
+      informationType: "notification is-danger -is-light",
       content: action.payload.content,
     };
   case "notificationClear":

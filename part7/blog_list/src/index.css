@@ -1,19 +1,26 @@
-.notification {
-  color: green;
-  background: lightgrey;
-  font-size: 20px;
-  border-style: solid;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
+.custom-list {
+  list-style-type: none;
+  padding-left: 1.5em;
 }
 
-.error {
-  color: red;
-  background: lightgrey;
-  font-size: 20px;
-  border-style: solid;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
+.custom-list li::before {
+  content: "\2022"; /* Unicode bullet character */
+  color: #000;
+  font-size: 1.2em;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.custom-column {
+  border-radius: 10px; /* Adjust the border-radius value to control the roundness of corners */
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.flex-container p {
+  margin-right: 10px; /* Adjust the margin as needed */
 }

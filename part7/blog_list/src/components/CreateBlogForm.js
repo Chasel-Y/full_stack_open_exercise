@@ -61,46 +61,62 @@ const CreateBlogForm = ( ) => {
     return null;
   } else{
     return (
-      <div>
-        <Togglabel
-          buttonLabel="create blog"
-          closeLabel="cancel"
-          ref={blogFormRef}
-        >
-          <h2>create new</h2>
-          <form onSubmit={handleSubmit}>
-            title:
-            <input
-              type="text"
-              value={title}
-              name="title"
-              id="title"
-              onChange={({ target }) => setTitle(target.value)}
-            />
-            <br></br>
-            author:
-            <input
-              type="text"
-              value={author}
-              name="author"
-              id="author"
-              onChange={({ target }) => setAuthor(target.value)}
-            />
-            <br></br>
-            url:
-            <input
-              type="text"
-              value={url}
-              name="url"
-              id="url"
-              onChange={({ target }) => setUrl(target.value)}
-            />
-            <br></br>
-            <button type="submit" id="blogSubmit">
-              create
-            </button>
-          </form>
-        </Togglabel>
+      <div className="container">
+        <div className="columns">
+          <div className="column has-background-info-light custom-column">
+            <Togglabel
+              buttonLabel="Create Blog"
+              closeLabel="Cancel"
+              ref={blogFormRef}
+            >
+              <div>
+                <form onSubmit={handleSubmit}>
+                  <h2 className="subtitle is-2">create new</h2>
+                  <div className="field">
+                    <label className="label">Title</label>
+                    <div className="control">
+                      <input
+                        type="text"
+                        value={title}
+                        name="title"
+                        id="title"
+                        onChange={({ target }) => setTitle(target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Author</label>
+                    <div className="control">
+                      <input
+                        type="text"
+                        value={author}
+                        name="author"
+                        id="author"
+                        onChange={({ target }) => setAuthor(target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Url</label>
+                    <div className="control">
+                      <input
+                        type="text"
+                        value={url}
+                        name="url"
+                        id="url"
+                        onChange={({ target }) => setUrl(target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <button type="submit" id="blogSubmit" className="button is-info">
+                    Create
+                  </button>
+                </form>
+              </div>
+            </Togglabel>
+          </div>
+        </div>
       </div>
     );
   }
